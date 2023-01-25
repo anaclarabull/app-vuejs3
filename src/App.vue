@@ -1,6 +1,13 @@
 <template>
   <div>
 
+    <!-- Assim seria estático: <img src="https://via.placeholder.com/150" alt="Foto cinza"> -->
+
+    <!-- O ex a seguir é dinâmico, ou seja, usado quando tem que pegar informações do banco por ex -->
+    <img 
+      v-bind:src="imgSrc"
+      v-bind:alt="imgAlt">
+
 
     <div 
       v-for="objeto in todos"
@@ -21,6 +28,8 @@ export default {
   name: 'App',
   data() {
     return {
+      imgSrc: 'https://via.placeholder.com/150',
+      imgAlt: 'Foto cinza',
       todos: [
         {
           "userId": 1,
