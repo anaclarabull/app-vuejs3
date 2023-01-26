@@ -1,12 +1,17 @@
 <template>
   <div>
 
-    <!-- Assim seria estático: <img src="https://via.placeholder.com/150" alt="Foto cinza"> -->
+    <h1 :class="{ 'title': true, 'title-home': isHome }">
+      Curso Vue 3
+    </h1>
 
-    <!-- O ex a seguir é dinâmico, ou seja, usado quando tem que pegar informações do banco por ex -->
-    <img 
-      v-bind:src="imgSrc"
-      v-bind:alt="imgAlt">
+    <p :class="['text']">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint debitis suscipit soluta! Esse doloremque voluptatem velit consequuntur consectetur, pariatur explicabo deleniti, excepturi sit, ex sed quasi possimus nam tenetur sint.
+    </p>
+
+    <p :style="{'color': 'aqua', 'background-color': 'black'}">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint debitis suscipit soluta! Esse doloremque voluptatem velit consequuntur consectetur, pariatur explicabo deleniti, excepturi sit, ex sed quasi possimus nam tenetur sint.
+    </p>
 
 
     <div 
@@ -14,9 +19,12 @@
       v-bind:key="objeto.id"
       class="todos-item"
     >
-      <!-- <div v-for="objeto in array">: "objeto" é um objeto e o "todos" é um array -->
+
+    <img 
+      :src="objeto.imgSrc"
+      >
+
       {{ objeto.title }}
-      <!-- objeto acessando uma propriedade dentro do objeto, o qual está apontando para os arrays -->
     </div>
 
 
@@ -28,20 +36,24 @@ export default {
   name: 'App',
   data() {
     return {
-      imgSrc: 'https://via.placeholder.com/150',
-      imgAlt: 'Foto cinza',
+      classVar: 'title',
+      isHome: true,
+      pClass: 'text',
       todos: [
         {
           "userId": 1,
           "id": 1,
           "title": "delectus aut autem",
-          "completed": false
+          "completed": false,
+          "imgSrc": 'https://via.placeholder.com/150'
+
         },
         {
           "userId": 1,
           "id": 2,
           "title": "quis ut nam facilis et officia qui",
-          "completed": false
+          "completed": false,
+          "imgSrc": 'https://via.placeholder.com/150'
         },
         {
           "userId": 1,
@@ -68,11 +80,22 @@ export default {
 </script>
 
 <style>
+.title{
+  font-size: 20px;
+}
+.title-home{
+  font-size: 40px;
+  color: red;
+
+}
 .todos-item{
   background-color: black;
   color: #fff;
   margin: 0 0 5px 0;
   padding: 3px 6px;
+}
+.text{
+  color: blue;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
