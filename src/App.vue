@@ -1,32 +1,67 @@
 <template>
   <div>
 
-    <h1 :class="{ 'title': true, 'title-home': isHome }">
-      Curso Vue 3
-    </h1>
-
-    <p :class="['text']">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint debitis suscipit soluta! Esse doloremque voluptatem velit consequuntur consectetur, pariatur explicabo deleniti, excepturi sit, ex sed quasi possimus nam tenetur sint.
-    </p>
-
-    <p :style="{'color': 'aqua', 'background-color': 'black'}">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint debitis suscipit soluta! Esse doloremque voluptatem velit consequuntur consectetur, pariatur explicabo deleniti, excepturi sit, ex sed quasi possimus nam tenetur sint.
-    </p>
-
-
-    <div 
-      v-for="objeto in todos"
-      v-bind:key="objeto.id"
-      class="todos-item"
-    >
-
-    <img 
-      :src="objeto.imgSrc"
-      >
-
-      {{ objeto.title }}
+    <div>
+      One-way data binding <br>
+      <!-- É quando somente o sistema consegue alterar informações.  -->
+      Two-way data binding (bidirecional)<br>
+      <!-- Quando o sistema e o usuários conseguem atualizar um valor, um formulário, por exemplo. Utiliza-se o v-model -->
+      v-model -> formulários
     </div>
 
+    <div>
+      <input v-model="name" type="text">
+      <!-- O v-model pega o que o usuário digitou no input e consegue colocar na variável -->
+      <br>
+      {{ name }}
+    </div>
+
+    <br>
+
+    <div>
+      <label>Sports</label>
+      <br>
+      <select v-model="sports">
+        <option value="">Escolha</option>
+        <option value="futebol">Futebol</option>
+        <option value="skate">Skate</option>
+        <option value="volei">Volei</option>
+      </select>
+      <br>
+      {{ sports }}
+    </div>
+    <br>
+
+    <div>
+      <label>Newsletter</label>
+      <br>
+      <input type="radio" value="Sim" v-model="newsletter"> Sim
+      <input type="radio" value="Não" v-model="newsletter"> Não
+      <br>
+      {{ newsletter }}
+
+    </div>
+    <br>
+
+    <div>
+      <label>Contrato</label>
+      <br>
+      <input type="checkbox" v-model="contrato"> Aceita nosso termos...
+      <br>
+      {{ contrato }}
+
+    </div>
+    <br>
+
+    <div>
+      <label>Cores que você mais gosta</label>
+      <br>
+      <input type="checkbox" value="Azul" v-model="colors"> Azul
+      <input type="checkbox" value="Amarelo" v-model="colors"> Amarelo
+      <br>
+      {{ colors }}
+
+    </div>
 
   </div>
 </template>
@@ -36,67 +71,17 @@ export default {
   name: 'App',
   data() {
     return {
-      classVar: 'title',
-      isHome: true,
-      pClass: 'text',
-      todos: [
-        {
-          "userId": 1,
-          "id": 1,
-          "title": "delectus aut autem",
-          "completed": false,
-          "imgSrc": 'https://via.placeholder.com/150'
-
-        },
-        {
-          "userId": 1,
-          "id": 2,
-          "title": "quis ut nam facilis et officia qui",
-          "completed": false,
-          "imgSrc": 'https://via.placeholder.com/150'
-        },
-        {
-          "userId": 1,
-          "id": 3,
-          "title": "fugiat veniam minus",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 4,
-          "title": "et porro tempora",
-          "completed": true
-        },
-        {
-          "userId": 1,
-          "id": 5,
-          "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-          "completed": false
-        }
-      ]
+      name: 'Ana',
+      sports: '',
+      newsletter: '',
+      contrato: '',
+      colors: [],
     }
   }
 }
 </script>
 
 <style>
-.title{
-  font-size: 20px;
-}
-.title-home{
-  font-size: 40px;
-  color: red;
-
-}
-.todos-item{
-  background-color: black;
-  color: #fff;
-  margin: 0 0 5px 0;
-  padding: 3px 6px;
-}
-.text{
-  color: blue;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
