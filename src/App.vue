@@ -18,7 +18,16 @@
     </div>
     <br>
 
-    <form action="https://www.google.com.br/" @submit="onSubmit">
+    <form action="https://www.google.com.br/" @submit.prevent="onSubmit">
+      <!-- O Modificador de Evento "prevent" serve para não realizar a ação, ou seja, não será direcionado para o site do Google  -->
+
+      <input 
+        type="text"
+        @keyup="onKeyUp"
+      >
+      <!-- key... é utilizado para se referir ao teclado. Nesse caso é quando qualquer tecla subir -->
+      <!-- Com os modificadores de key, pode-se usar keyup.enter, por exemplo, que o evento só será disparado quando apertar a tecla "enter" -->
+
       <button type="submit">
         <!-- type="submit" utiizado para enviar informações -->
       Enviar
@@ -48,6 +57,9 @@ export default {
     },
     onSubmit(){
       console.log('submit')
+    },
+    onKeyUp(){
+      console.log('onKeyUp')
     }
   }
 }
